@@ -18,10 +18,10 @@ export default {
       })
   },
 
-  findAdminBlog ({ commit }) {
+  findAdminBlog ({ commit }, username) {
     axios({
       method: 'get',
-      url: `${accountServer}/blog/userid/000000`
+      url: `${accountServer}/blog/username/${username}`
     })
       .then(res => {
         if (res.status === 200) {

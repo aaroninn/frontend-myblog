@@ -70,13 +70,13 @@ export default {
       let data = {
         data: this.loginForm,
         successFun: () => {
-          this.$message.success('login success')
+          this.$message.success('登录成功!')
           this.$cookie.set('pass', this.$store.state.token, 1)
           this.$cookie.set('userid', this.$store.state.userid, 1)
           this.$router.push({path: '/'})
         },
         failFun: () => {
-          this.$message.error('login failed')
+          this.$message.error('登录失败!')
         }
       }
       this.$store.dispatch('login', data)
@@ -93,10 +93,10 @@ export default {
           let data = {
             data: this.registerForm,
             successFun: () => {
-              this.$message('register success')
+              this.$message.success('注册成功!')
             },
             failFun: () => {
-              this.$message('register failed')
+              this.$message.error('注册失败')
             }
           }
           this.$store.dispatch('register', data)

@@ -13,5 +13,8 @@ export default {
   SETUSERINFO (state, data) {
     state.userid = data.userid
     state.token = data.token
+  },
+  SETHOST (state, host) {
+    state.host = host
   }
 }

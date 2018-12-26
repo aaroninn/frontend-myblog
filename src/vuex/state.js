@@ -3,5 +3,6 @@ export default {
   user: {},
   userid: '',
   token: '',
-  blog: {}
+  blog: {},
+  host: ''
 }

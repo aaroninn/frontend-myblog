@@ -4,7 +4,7 @@ import router from './router/index.js'
 
 // 全局 axios 默认值
 // axios.defaults.baseURL = 'http://www.tb.com';
-export const accountServer = 'http://localhost:5000'
+export const accountServer = 'http://114.115.144.231:5000'
 // 请求 拦截器
 axios.interceptors.request.use(
   config => {

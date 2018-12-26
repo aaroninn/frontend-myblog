@@ -10,13 +10,17 @@ export default {
   created () {
     var token = this.$cookie.get('pass')
     var userid = this.$cookie.get('userid')
-    if (token === null || userid === null) {
-      var data = {
-        userid: userid,
-        token: token
-      }
-      this.$store.dispatch('setUserInfo', data)
+    var data = {
+      userid: userid,
+      token: token
     }
+    this.$store.dispatch('setUserInfo', data)
+    var host = window.location.host
+    host = host.split('.')[0]
+    if (host === 'www' || host.split(':')[0] === 'localhost') {
+      host = 'admin'
+    }
+    this.$store.state.host = host
   }
 }
 </script>

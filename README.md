@@ -28,3 +28,4 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+加入了根据二级域名访问不同用户主页的功能, 但是目前这个小站所有的博客文章的path都是/Blog,不利于分享自己的文章,下一次commit将为每一个文章设定单独的path

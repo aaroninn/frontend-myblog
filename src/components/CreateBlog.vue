@@ -8,20 +8,23 @@
   text-color="#989898"
   active-text-color="#989898">
       <el-menu-item v-if="this.$store.state.token === ''" index="1" @click="$router.push('/Login')">登录/注册</el-menu-item>
-          <el-menu-item v-if="this.$store.state.token !== ''" index="1" @click="backMyBlogs">返回我的博客</el-menu-item>
+      <el-menu-item v-else index="1" @click="backMyBlogs">返回我的博客</el-menu-item>
 </el-menu>
 </el-header>
 <div style="margin: 20px 0;"></div>
 <el-input
   type="textarea"
   placeholder="请输标题 "
-  v-model="blog.title">
+  v-model="blog.title"
+  style="width: 100%; height: 100%;">
 </el-input>
 <div style="margin: 20px 0;"></div>
 <quill-editor v-model="blog.content"
                             ref="myQuillEditor"
-                            class="editer">
+                            class="editer"
+                            style="width: 100%; height: 100%;">
               </quill-editor>
+<vue-ueditor-wrap v-model="content"  :config="myConfig"></vue-ueditor-wrap>
 <el-button @click="createBlog()">发布</el-button>
  <el-dialog
   title="修改密码"
@@ -50,7 +53,6 @@ export default {
   data () {
     return {
       title: '',
-      content: '',
       blog: {
         title: '',
         content: ''
@@ -60,7 +62,8 @@ export default {
         prePassword: ''
       },
       showEdit: false,
-      activeIndex: '1'
+      activeIndex: '1',
+      config: {}
     }
   },
   created () {
@@ -85,12 +88,13 @@ export default {
           this.afterCreateBlog()
         },
         failFun: () => {
-          this.$message.error('创建失败')
+          this.$message.error('发表博客失败!')
         }
       }
       this.$store.dispatch('createBlog', data)
     },
     afterCreateBlog () {
+      this.$message.success('发表博客成功!')
       this.title = ''
       this.content = ''
     },
@@ -105,13 +109,13 @@ export default {
       let data = {
         data: this.updatePassword,
         successFun: () => {
-          this.$message('修改密码成功')
+          this.$message.success('修改密码成功!')
           this.updatePassword.password = ''
           this.updatePassword.prePassword = ''
           this.showEdit = false
         },
         failFun: () => {
-          this.$message('修改密码失败')
+          this.$message.error('修改密码失败')
           this.updatePassword.password = ''
           this.updatePassword.prePassword = ''
         }

@@ -58,7 +58,12 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('findAdminBlog')
+    if (this.$store.state.token === null) {
+      var username = this.$store.state.host
+      this.$store.dispatch('findAdminBlog', username)
+    } else {
+      this.$store.dispatch('findBlogsByUser')
+    }
   },
   computed: {
     blogs () {
@@ -81,14 +86,14 @@ export default {
       let data = {
         data: this.updatePassword,
         successFun: () => {
-          this.$message('修改密码成功')
+          this.$message.success('修改密码成功!')
           this.updatePassword.password = ''
           this.updatePassword.prePassword = ''
           this.showEdit = false
           this.logOut()
         },
         failFun: () => {
-          this.$message('修改密码失败')
+          this.$message.error('修改密码失败!')
           this.updatePassword.password = ''
           this.updatePassword.prePassword = ''
         }

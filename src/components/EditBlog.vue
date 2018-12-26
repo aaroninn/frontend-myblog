@@ -8,7 +8,7 @@
   text-color="#989898"
   active-text-color="#989898">
       <el-menu-item v-if="this.$store.state.token === ''" index="1" @click="$router.push('/Login')">登录/注册</el-menu-item>
-          <el-menu-item v-if="this.$store.state.token !== ''" index="1" @click="backMyBlogs">返回我的博客</el-menu-item>
+          <el-menu-item v-else index="1" @click="backMyBlogs">返回我的博客</el-menu-item>
 </el-menu>
 </el-header>
 <div style="margin: 20px 0;"></div>
