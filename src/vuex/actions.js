@@ -138,5 +138,22 @@ export default {
         data.failFun()
         console.log(err)
       })
+  },
+
+  editBlog ({ commit }, data) {
+    axios({
+      method: 'put',
+      url: `${accountServer}/blog/${data.data.id}`,
+      data: data.data
+    })
+      .then(res => {
+        if (res.status === 200) {
+          data.successFun()
+        }
+      })
+      .catch(err => {
+        data.failFun()
+        console.log(err)
+      })
   }
 }

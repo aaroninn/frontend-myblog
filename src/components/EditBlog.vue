@@ -15,10 +15,10 @@
 <el-input
   type="textarea"
   placeholder="请输标题 "
-  v-model="blog.title">
+  v-model="editblog.title">
 </el-input>
 <div style="margin: 20px 0;"></div>
-<quill-editor v-model="blog.content"
+<quill-editor v-model="editblog.content"
                             ref="myQuillEditor"
                             class="editer">
               </quill-editor>
