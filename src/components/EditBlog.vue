@@ -18,10 +18,11 @@
   v-model="editblog.title">
 </el-input>
 <div style="margin: 20px 0;"></div>
-<quill-editor v-model="editblog.content"
+<pre><quill-editor v-model="editblog.content"
                             ref="myQuillEditor"
-                            class="editer">
-              </quill-editor>
+                            class="editer"
+                             style="width: 100%; height: 100%;">
+              </quill-editor></pre>
 <el-button @click="editBlog()">发布</el-button>
         </body>
     </html>

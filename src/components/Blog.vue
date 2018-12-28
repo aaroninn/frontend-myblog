@@ -56,7 +56,12 @@ export default {
       comment: '',
       activeIndex: '1',
       editorOption: {
-        theme: 'bubble'
+        readonly: true,
+        theme: 'bubble',
+        modules: {
+          toolbar: false
+        },
+        placeholder: '为什么readOnly设置不起作用'
       }
     }
   },

@@ -19,11 +19,11 @@
   style="width: 100%; height: 100%;">
 </el-input>
 <div style="margin: 20px 0;"></div>
-<quill-editor v-model="blog.content"
+<pre><quill-editor v-model="blog.content"
                             ref="myQuillEditor"
                             class="editer"
                             style="width: 100%; height: 100%;">
-              </quill-editor>
+              </quill-editor></pre>
 <el-button @click="createBlog()">发布</el-button>
  <el-dialog
   title="修改密码"
