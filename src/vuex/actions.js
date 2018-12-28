@@ -155,5 +155,20 @@ export default {
         data.failFun()
         console.log(err)
       })
+  },
+
+  findBlogByID ({ commit }, path) {
+    axios({
+      method: 'get',
+      url: `${accountServer}/blog/id/${path}`
+    })
+      .then(res => {
+        if (res.status === 200) {
+          commit('SETBLOG', res.data)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }

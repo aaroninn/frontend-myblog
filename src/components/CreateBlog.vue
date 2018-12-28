@@ -24,7 +24,6 @@
                             class="editer"
                             style="width: 100%; height: 100%;">
               </quill-editor>
-<vue-ueditor-wrap v-model="content"  :config="myConfig"></vue-ueditor-wrap>
 <el-button @click="createBlog()">发布</el-button>
  <el-dialog
   title="修改密码"

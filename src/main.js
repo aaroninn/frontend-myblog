@@ -15,6 +15,7 @@ import 'mavon-editor/dist/css/index.css'
 import 'iview/dist/styles/iview.css'
 import axios from 'axios'
 import vueCookie from 'vue-cookie'
+import moment from 'moment'
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
@@ -24,6 +25,7 @@ Vue.use(ElementUI)
 Vue.use(mavonEditor)
 Vue.use(vueCookie)
 Vue.prototype.axios = axios
+Vue.prototype.moment = moment
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

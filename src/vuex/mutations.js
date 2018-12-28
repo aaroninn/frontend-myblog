@@ -7,8 +7,8 @@ export default {
     state.userid = data.id
     state.token = data.token
   },
-  SETBLOG (state, blog) {
-    state.blog = blog
+  SETBLOG (state, data) {
+    state.blog = data
   },
   SETUSERINFO (state, data) {
     state.userid = data.userid

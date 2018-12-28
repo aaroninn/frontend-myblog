@@ -15,7 +15,7 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
-      path: '/blog',
+      path: '/blog/:blogid',
       name: 'Blog',
       meta: {
         title: '博客内容'

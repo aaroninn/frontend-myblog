@@ -73,8 +73,7 @@ export default {
   methods: {
     getBlogByIndex (index) {
       let blog = this.blogs[index]
-      this.$store.commit('SETBLOG', blog)
-      this.$router.push({path: '/blog'})
+      this.$router.push({path: '/blog/' + blog.id})
     },
     getMyBlogs () {
       this.$store.dispatch('findBlogsByUser')
@@ -104,6 +103,13 @@ export default {
       this.$cookie.delete('pass')
       this.$cookie.delete('userid')
       location.reload()
+    },
+    findBlogByID () {
+      var path = window.location.hash
+      var pathname = window.location.pathname
+      path = path.split(pathname)
+      path = path[path.length - 1]
+      this.$store.dispatch('findBlogByID', path)
     }
   }
 }

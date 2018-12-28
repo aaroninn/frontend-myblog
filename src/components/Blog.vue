@@ -15,12 +15,13 @@
       </el-header>
       <el-main>
         <h1>{{blog.title}}</h1>
-        <div v-if="this.$store.state.blogs.length !== 0">
-        <Time :time="this.blog.createAt" type="datetime"></Time>
-        </div >
-        <div class="blogcontent">
-          <div v-html="blog.content" class="blogcontent"></div>
-        </div>
+          <div>{{moment(blog.createAt).format("YYYY-MM-DD HH:mm:ss")}}</div>
+        <quill-editor v-model="blog.content"
+                            ref="myQuillEditor"
+                            class="editer"
+                            :options="editorOption"
+                            style="width: auto; height: auto;">
+              </quill-editor>
         <div class="editbutton">
           <el-button v-if="blog.userID === this.$store.state.userid" icon="el-icon-edit" @click="$router.push('/EditBlog')"></el-button>
           <el-button v-if="blog.userID === this.$store.state.userid" icon="el-icon-delete" @click="deleteBlog"></el-button>
@@ -33,7 +34,7 @@
         <div v-for="comment in blog.comment" :key='comment.content'>
           <div class="comment">
             <pre>{{comment.userName}}:{{comment.content}}</pre>
-            <Time :time="comment.createAt" type="datetime"></Time>
+             <div>{{moment(comment.createAt).format("YYYY-MM-DD HH:mm:ss")}}</div>
           </div>
         </div>
       </el-footer>
@@ -45,18 +46,27 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import {Time} from 'iview'
+import { quillEditor } from 'vue-quill-editor'
 export default {
   components: {
-    VueMarkdown, Time
+    VueMarkdown, quillEditor
   },
   data () {
     return {
       comment: '',
-      activeIndex: '1'
+      activeIndex: '1',
+      editorOption: {
+        theme: 'bubble'
+      }
     }
   },
   created () {
+    var path = window.location.hash
+    var pathname = window.location.pathname
+    path = path.split(pathname)
+    path = path[path.length - 1]
+    this.$store.state.blog = {}
+    this.$store.dispatch('findBlogByID', path)
   },
   computed: {
     blog () {
