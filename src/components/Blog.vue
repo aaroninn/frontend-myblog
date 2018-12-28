@@ -16,12 +16,12 @@
       <el-main>
         <h1>{{blog.title}}</h1>
           <div>{{moment(blog.createAt).format("YYYY-MM-DD HH:mm:ss")}}</div>
-        <quill-editor v-model="blog.content"
+       <pre> <quill-editor v-model="blog.content"
                             ref="myQuillEditor"
                             class="editer"
                             :options="editorOption"
                             style="width: auto; height: auto;">
-              </quill-editor>
+              </quill-editor> </pre>
         <div class="editbutton">
           <el-button v-if="blog.userID === this.$store.state.userid" icon="el-icon-edit" @click="$router.push('/EditBlog')"></el-button>
           <el-button v-if="blog.userID === this.$store.state.userid" icon="el-icon-delete" @click="deleteBlog"></el-button>
