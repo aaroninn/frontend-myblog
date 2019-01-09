@@ -17,7 +17,7 @@ export default {
     this.$store.dispatch('setUserInfo', data)
     var host = window.location.host
     host = host.split('.')[0]
-    if (host === 'www' || host.split(':')[0] === 'localhost') {
+    if (host === 'www' || host.split(':')[0] === 'localhost' || host === 'mycodetour') {
       host = 'admin'
     }
     this.$store.state.host = host

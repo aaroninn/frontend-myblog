@@ -56,12 +56,12 @@ export default {
       comment: '',
       activeIndex: '1',
       editorOption: {
-        readonly: true,
         theme: 'bubble',
         modules: {
           toolbar: false
         },
-        placeholder: '为什么readOnly设置不起作用'
+        placeholder: '',
+        readOnly: true
       }
     }
   },

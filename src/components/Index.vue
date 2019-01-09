@@ -1,5 +1,9 @@
 <template>
 <html>
+  <head>
+  <meta name="google-site-verification" content="rf3FqRdCPE7tq1493dKfeXHrG2lQ-E60nlA1Z2Y7lhw" />
+  <meta name="baidu-site-verification" content="duxW7Oi3yS" />
+  </head>
   <body>
 <el-container>
 <el-header class="el-menu">
@@ -18,17 +22,18 @@
     </el-submenu>
 </el-menu>
 </el-header>
-    <div class = "title">
 <el-main>
 <el-row v-for = "(blog, index) in blogs" :key="index">
 <el-button  @click="getBlogByIndex(index)" type="text">
-    <font size="5" face="Verdana">
+    <font class="fonttitle" size="3" face="Verdana" color="black">
     {{blog.title}}
+    </font>
+     <font size="3" face="Verdana" color="black" class="fonttime">
+    {{moment(blog.createAt).format("YYYY-MM-DD HH:mm:ss")}}
     </font>
     </el-button>
 </el-row>
 </el-main>
-    </div>
 </el-container>
  <el-dialog
   title="修改密码"
@@ -116,10 +121,19 @@ export default {
 </script>
 
 <style>
-.title{
-    text-align: left;
-    width: 480px;
-    text-decoration-color: black;
+font.fonttitle{
+  position: fixed;
+  text-align: left;
+  left: 2%;
+  width: auto;
+  height: auto;
+}
+font.fonttime{
+  text-align: right;
+  position: fixed;
+  right:5%;
+  height: auto;
+  width: auto;
 }
 .dialog{
   padding: 0% 0% 5% 0%;
