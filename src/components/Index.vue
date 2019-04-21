@@ -78,7 +78,7 @@ export default {
   methods: {
     getBlogByIndex (index) {
       let blog = this.blogs[index]
-      this.$router.push({path: '/blog/' + blog.id})
+      this.$router.push({path: '/blog' + '/' + blog.id})
     },
     getMyBlogs () {
       this.$store.dispatch('findBlogsByUser')

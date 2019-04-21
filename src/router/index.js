@@ -13,9 +13,10 @@ Vue.use(ElementUI)
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/blog/:blogid',
+      path: '/blog/:id',
       name: 'Blog',
       meta: {
         title: '博客内容'

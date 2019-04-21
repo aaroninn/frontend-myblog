@@ -66,9 +66,9 @@ export default {
     }
   },
   created () {
-    var path = window.location.hash
-    var pathname = window.location.pathname
-    path = path.split(pathname)
+    var path = window.location.href
+    var pathsplit = '/'
+    path = path.split(pathsplit)
     path = path[path.length - 1]
     this.$store.state.blog = {}
     this.$store.dispatch('findBlogByID', path)
